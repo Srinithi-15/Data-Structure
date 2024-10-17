@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+    for (int i = 0; i < contactCount; i++) {
+        if (strcmp(phonebook[i].name, searchName) == 0) {
+            printf("Contact found:\n");
+            printf("Name: %s\n", phonebook[i].name);
+            printf("Phone: %s\n", phonebook[i].phone);
+            printf("Address: %s\n", phonebook[i].address);
+            return;
+        }
+    }
+
+    printf("Contact not found.\n");
+}
+
+void displayContacts() {
+    if (contactCount == 0) {
+        printf("No contacts to display.\n");
+        return;
+    }
+
+    printf("All contacts:\n");
+    for (int i = 0; i < contactCount; i++) {
+        printf("Contact %d:\n", i + 1);
+        printf("Name: %s\n", phonebook[i].name);
+        printf("Phone: %s\n", phonebook[i].phone);
+        printf("Address: %s\n", phonebook[i].address);
+    }
+}
+
+int main() {
+    int choice;
+    while (1) {
+        printf("\nPhonebook Menu:\n");
+        printf("1. Add Contact\n");
+        printf("2. Search Contact\n");
+        printf("3. Display Contacts\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                addContact();
+                break;
+            case 2:
+                searchContact();
+                break;
+            case 3:
+                displayContacts();
+                break;
+            case 4:
+                printf("Exiting program...\n");
+                return 0;
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    }
+
+return 0;
+}
